@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox as mb
 from customtkinter import *
 from CTkColorPicker import *
 from main_frame import Main_frame
@@ -433,21 +434,8 @@ class Main_element:
         except TclError:
             print("please enter hex color for the background")
 
-    def change_size(self):
-        self.value_size = self.size_menu.outputbar.get()
-       
-        try:
-            if int(self.value_size) > 30:
-                print("\nmax 30")
 
-            else:
-                self.text_prev.config(font=("calibry", self.value_size))
-                print(f"\n{self.value_size}")
-
-        except ValueError:
-                print("\nplease enter a valid number")
-
-    def change_font(self):
+    def change_font_size(self):
         try:
             selected_indices = str(self.font_lb.curselection())
             replace_char = str.maketrans({"(":"", ")":"", ",":""})
@@ -455,18 +443,23 @@ class Main_element:
             index_font = selected_indices.translate(replace_char)
             self.choosen_font = self.font[int(index_font)]
 
-            self.text_prev.config(font=(self.choosen_font, int(self.value_size)))
-            print(f"{selected_indices}\n{index_font}\n{self.choosen_font}")
+            self.value_size = self.size_menu.outputbar.get()
+
+            if int(self.value_size) <= 30:
+                self.text_prev.config(font=(self.choosen_font, int(self.value_size)))
+                print(f"{selected_indices} > {index_font} > {self.choosen_font}")
+            else:
+                mb.showerror("font size limit", "font size is limited to 30 only")
 
         except ValueError:
-            print("Default")
+            return
 
     
     def text_preview_border(self):
         enter_btn = Button(self.main_frame.frame_preview_input_row3,
                         width=100,
                         image=self.aset.down_icon,
-                        command=lambda:[self.change_size(), self.change_font(), self.change_text_color(), self.change_bg_color()])
+                        command=lambda:[self.change_font_size(), self.change_text_color(), self.change_bg_color()])
         enter_btn.grid(row=0, column=0, pady=(5,0))
 
 
@@ -478,7 +471,7 @@ class Main_element:
         self.text_prev = Label(self.main_frame.frame_preview_input_row3,
                                 text="Hello Word",
                                 relief="sunken",
-                                font=("calibry"),
+                                font=("calibry", 12),
                                 fg="#000000",
                                 bg="#FFFFFF",
                                 padx=10,
