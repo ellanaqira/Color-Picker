@@ -1,0 +1,5 @@
+CTkColorPicker==0.9.0
+CTkColorPicker==0.9.0
+customtkinter==5.2.2
+Pillow==12.1.1
+pyperclip==1.11.0
