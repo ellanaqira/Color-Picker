@@ -44,7 +44,7 @@ class Main_element:
 # Button to open color chooser window
     def color_button(self):
         self.color_btn = CTkButton(self.main_frame.frame_color,
-                                   text="choose color",
+                                   text="Choose a Color",
                                    # Function to open color chooser window
                                    command=self.open_color)
         self.color_btn.grid(row=0, column=0)
@@ -52,7 +52,15 @@ class Main_element:
 # Instruction label to tell user to put color chooser window in available frame, for a neat appearance only
     def insruction(self):
         label_instruction = Label(self.main_frame.frame_color,
-                                  text='put the color chooser window here',
+                                  text="""
+_________( Quick Instructions )_________
+* For a neat appearance, you can put
+   the Choose Color window here.
+* The color you select from here will
+   appear in Color Box 1.
+* The color you enter into the Color
+   Input bar will appear in Color Box 2.""",
+                                  justify='left',
                                   bg='#CFCFCF')
         label_instruction.grid(row=1, column=0)
 
@@ -298,26 +306,26 @@ class Main_element:
     #color view line title
     def colorview_title_line(self):
         self.colorview_title = Label(self.main_frame.frame_title_view,
-                                    text=f"{"_"*18}[ Output Color ]{"_"*18}")
+                                    text=f"{"_"*5}[ Color Box 1 ]{"_"*12}[ Color Box 2 ]{"_"*5}")
         self.colorview_title.grid(row=0, column=0, pady=(7,0))
 
-    #color view 1
+#color box 1
     def color_view1(self):
         self.view1 = Label(self.main_frame.frame_view,
                              bg="#FFFFFF",
                              padx=77,
-                             pady=95)
+                             pady=90)
         self.view1.grid(row=0, column=0)
 
     def change_color1(self):
         self.view1.config(bg=self.hex_value)
 
-#color view 2
+#color color 2
     def color_view2(self):
         self.view2 = Label(self.main_frame.frame_view,
                             bg="#FFFFFF",
                             padx=77,
-                            pady=95)
+                            pady=90)
         self.view2.grid(row=0, column=1)
 
 #text box line title

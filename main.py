@@ -38,7 +38,7 @@ class Main_window:
         
     def window_setup(self):
         self.main_window.title('Colorpick')
-        self.main_window.geometry('929x509')
+        self.main_window.geometry('929x500')
         app_icon = PhotoImage(file='aset/icon.png')
         self.main_window.iconphoto(True, app_icon)
         self.main_window.resizable(width=False, height=False)

@@ -7,8 +7,8 @@ class Main_frame:
         self.frame_color = Frame(bg="#CFCFCF",
                                  relief='sunken',
                                  bd=4,
-                                 padx=43,
-                                 pady=220)
+                                 padx=34,
+                                 pady=150)
         self.frame_color.pack(pady=(5,5), padx=(5,0), side='left', anchor='n')
 
 
